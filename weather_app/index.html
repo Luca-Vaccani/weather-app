@@ -15,15 +15,119 @@
 
         <div id="container"> 
         
-            <div id="temperature"> 22 </div>
+            <div id="temperature"></div>
             
             <div id="celsius"> <span id="orange">C</span>elsius </div>
         
             <div id="weather-sprite"></div>
         
-            <div id="loc-date"> <p>Los Angeles</p> <p>3 JAN 2018</p></div>
+            <div id="loc-date"> <p id="loc">Boston</p> <p id="date">JAN 3 2018</p></div>
             
         </div>
+    
+            <script
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+            </script>
+
+            <script>
+                $(function() {
+                var url = "http://api.openweathermap.org/data/2.5/weather?q=Boston&units=imperial&appid=3d6865336a62d26817b43ec460b2f61d";
+                window['wxCallback'] = function(weatherData) {
+
+                var currentTemp = Math.round(weatherData.main.temp);
+                var currentIcon = "<img src='sprites/" + weatherData.weather[0].icon + ".png'>";
+
+                $('#data').html(JSON.stringify(weatherData));
+                $('#temperature').html(currentTemp);
+                $('#weather-sprite').html(currentIcon);
+                };
+                $.ajax({
+                url: url,
+                dataType: 'jsonp',
+                cache: true,
+                jsonpCallback: 'wxCallback'
+            });
+            });
+            </script>
+    
+            <script>
+                document.getElementById("temperature").innerHTML = "44";
+                
+                function formatDate(date) {
+                    var monthNames = [
+                        "January", "February", "March",
+                        "April", "May", "June", "July",
+                        "August", "September", "October",
+                        "November", "December"
+                                    ];
+
+                    var day = date.getDate();
+                    var monthIndex = date.getMonth();
+                    var year = date.getFullYear();
+                                        }
+                
+                document.getElementById("date").innerHTML = day + ' ' + monthNames[monthIndex] + ' ' + year;
+                
+            </script>
+    
+    
+            <!--
+                Url = http://api.openweathermap.org/data/2.5/weather?q=Boston,us&units=imperial&appid=3d6865336a62d26817b43ec460b2f61d
+
+                 Url = http://api.openweathermap.org/data/2.5/weather?q="form-value+",us&units=imperial&appid=3d6865336a62d26817b43ec460b2f61d
+
+
+                ------------------JAVASCRIPT---------------------------
+                var xmlhttp = new XMLHttpRequest();
+                var url = "http://api.openweathermap.org/data/2.5/weather?
+                q=Boston&appid=3d6865336a62d26817b43ec460b2f61d";
+                    xmlhttp.onreadystatechange = function() 
+                {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("data").innerHTML = xmlhttp.responseText;
+                }}
+
+                var weatherData = JSON.parse(xmlhttp.responseText);
+                var currentTemp = weatherData.main.temp;
+                var currentIcon = "<img src='http://openweathermap.org/img/w/" +
+                weatherData.weather[0].icon + ".png'>";
+
+
+                Temperature = data.main.temp
+
+                weather-sprite = data.weather.icon
+
+                ---------------------------------------------
+
+                JQUERY
+
+            <script
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+            </script>
+
+            <script>
+                $(function() {
+                var url = "http://api.openweathermap.org/data/2.5/weather?
+                q=Boston&units=metric&appid=3d6865336a62d26817b43ec460b2f61d";
+                window['wxCallback'] = function(weatherData) {
+
+                var currentTemp = weatherData.main.temp;
+                var currentIcon = "<img src='http://openweathermap.org/img/w/" +
+                weatherData.weather[0].icon + ".png'>";
+
+                $('#data').html(JSON.stringify(weatherData));
+                $('#temperature').html(currentTemp);
+                $('#weather-sprite').html(currentIcon);
+                };
+                $.ajax({
+                url: url,
+                dataType: 'jsonp',
+                cache: true,
+                jsonpCallback: 'wxCallback'
+            });
+            });
+            </script>
+            -->
 
 
 </body>

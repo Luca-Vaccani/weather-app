@@ -48,6 +48,7 @@
         grid-column-end: 4;
         grid-row-start: 6;
         grid-row-end: 7;
+    
         background-image: url(../image/sprites-transparent.png);
         background-size: cover;
         // background-position: 1440px 0px;
