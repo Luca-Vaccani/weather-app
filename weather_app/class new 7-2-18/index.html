@@ -21,7 +21,7 @@
         
             <div id="weather-sprite"></div>
         
-            <div id="loc-date"> <p id="loc">Boston</p> <div id="date"></div></div>
+            <div id="loc-date"> <p id="loc">Boston</p> <p id="date"></p></div>
             
         </div>
     
@@ -51,19 +51,6 @@
             </script>
     
             <script>
-                n =  new Date();
-                y = n.getFullYear();
-                m = n.getMonth() + 1;
-                d = n.getDate();
-                
-                document.getElementById("date").innerHTML = d + " / " + m + " / " + y;
-                
-            </script>
-    
-    
-            <!--
-
-document.getElementById("temperature").innerHTML = "44";
                 
                 function formatDate(date) {
                     var monthNames = [
@@ -72,16 +59,19 @@ document.getElementById("temperature").innerHTML = "44";
                         "August", "September", "October",
                         "November", "December"
                                     ];
-
+                    
+                        }
                     var day = date.getDate();
                     var monthIndex = date.getMonth();
                     var year = date.getFullYear();
-                                        }
+                                        
                 
                 document.getElementById("date").innerHTML = day + ' ' + monthNames[monthIndex] + ' ' + year;
                 
-
-
+            </script>
+    
+    
+            <!--
                 Url = http://api.openweathermap.org/data/2.5/weather?q=Boston,us&units=imperial&appid=3d6865336a62d26817b43ec460b2f61d
 
                  Url = http://api.openweathermap.org/data/2.5/weather?q="form-value+",us&units=imperial&appid=3d6865336a62d26817b43ec460b2f61d

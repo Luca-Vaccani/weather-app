@@ -48,9 +48,11 @@
         grid-column-end: 4;
         grid-row-start: 6;
         grid-row-end: 7;
+        width:180px;
+        object-fit: contain;
     
-        background-image: url(../image/sprites-transparent.png);
-        background-size: cover;
+        // background-image: url(../image/sprites-transparent.png);
+        // background-size: cover;
         // background-position: 1440px 0px;
         // background-position: 2880px 0px;
         // background-position: 4320px 0px;
